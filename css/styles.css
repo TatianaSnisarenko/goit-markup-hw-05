@@ -21,6 +21,7 @@
   --card-shadow: 0px 1px 6px 0px rgba(46, 47, 66, 0.08),
     0px 1px 1px 0px rgba(46, 47, 66, 0.16),
     0px 2px 1px 0px rgba(46, 47, 66, 0.08);
+  --btn-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
 
   /* Transitions */
   --transition-funtion: cubic-bezier(0.4, 0, 0.2, 1);
@@ -164,6 +165,17 @@ button {
   transition: background-color var(--transition-time) var(--transition-funtion);
 }
 
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0, 04em;
+  color: var(--white);
+  border: 0;
+}
+
 /* #endregion */
 
 /* #region Logo */
@@ -289,18 +301,11 @@ button {
 
 .order-btn {
   background: var(--iris);
-  font-weight: 500;
   font-size: 16px;
-  letter-spacing: 0.04em;
-  color: var(--white);
-  line-height: 1.5;
-  display: block;
   min-width: 169px;
   border-radius: 4px;
   padding: 16px 32px;
-  border-radius: 4px;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
-  border: 0;
+  box-shadow: var(--btn-shadow);
   transition: background-color var(--transition-time) var(--transition-funtion);
 }
 
@@ -480,4 +485,143 @@ button {
   display: inline-block;
   margin-bottom: 16px;
 }
+/* #endregion */
+
+/* #region Modal */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: var(--navy-blue-modal);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: var(--transition-time) var(--transition-funtion);
+  transition-property: opacity, visibility;
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: initial;
+  }
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -76%);
+  opacity: 0;
+  max-width: 408px;
+  width: 100%;
+  min-height: 584px;
+  padding: 24px;
+  padding-top: 72px;
+  border-radius: 4px;
+  background-color: var(--dairy);
+  box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2),
+    0px 1px 3px 0px rgba(0, 0, 0, 0.12), 0px 1px 1px 0px rgba(0, 0, 0, 0.14);
+  transition: var(--transition-time) var(--transition-funtion);
+  transition-property: opacity, visibility;
+
+  .backdrop.is-open & {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
+
+.modal-caption {
+  margin-bottom: 16px;
+  text-align: center;
+  font-weight: 500;
+  letter-spacing: 0.32px;
+  color: var(--navy-blue);
+}
+
+.modal-form-comment {
+  display: block;
+  width: 100%;
+  height: 120px;
+  padding: 8px 16px;
+
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.48px;
+  border-radius: 4px;
+  margin-bottom: 24px;
+  border: 1px solid var(--navy-blue-modal, rgba(46, 47, 66, 0.4));
+  resize: none;
+
+  &::placeholder {
+    color: var(--navy-blue-modal);
+  }
+}
+
+.modal-agreement {
+  margin-top: 16px;
+  margin-bottom: 24px;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.48px;
+  color: var(--light-slate);
+  a {
+    color: var(--iris);
+  }
+}
+
+.modal-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  min-width: 24px;
+  max-height: 24px;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: var(--cornflower);
+}
+
+.modal-form-btn {
+  display: block;
+  margin: 0 auto;
+  border-radius: 4px;
+  background: var(--iris);
+  box-shadow: var(--btn-shadow);
+  min-width: 169px;
+  padding: 16px 32px;
+}
+
+.modal-field {
+  margin-bottom: 8px;
+}
+
+.modal-form-label {
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.48px;
+}
+
+.modal-form-wrapper {
+  position: relative;
+}
+
+.modal-form-input {
+  width: 100%;
+  height: 40px !important;
+  border-radius: 4px;
+  border: 1px solid var(--navy-blue-modal, rgba(46, 47, 66, 0.4));
+}
+
+.modal-form-icon {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+}
+
 /* #endregion */
