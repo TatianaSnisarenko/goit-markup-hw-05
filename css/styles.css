@@ -511,6 +511,7 @@ input {
   border-radius: 4px;
   border: 1px solid var(--white);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+  color: var(--white);
 }
 
 .subscribe-email-input::placeholder {
@@ -582,8 +583,7 @@ input {
   background-color: var(--dairy);
   box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2),
     0px 1px 3px 0px rgba(0, 0, 0, 0.12), 0px 1px 1px 0px rgba(0, 0, 0, 0.14);
-  transition: var(--transition-primary);
-  transition-property: opacity, visibility;
+  transition: transform var(--transition-primary);
 
   .backdrop.is-open & {
     transform: translate(-50%, -50%);
@@ -679,6 +679,7 @@ input {
 .check-box-input:checked + .modal-agreement-label .custom-checkbox {
   background-color: var(--ocean);
   fill: var(--cloud);
+  border: none;
 }
 
 .modal-btn {
@@ -700,7 +701,7 @@ input {
 
 .modal-btn:hover,
 .modal-btn:focus {
-  background: var(--ocean);
+  background-color: var(--ocean);
   border: none;
 }
 
