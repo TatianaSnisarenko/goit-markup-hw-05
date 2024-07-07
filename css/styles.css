@@ -557,7 +557,7 @@ input {
   visibility: hidden;
   pointer-events: none;
 
-  transition: var(--transition-modal);
+  transition: var(--transition-primary);
   transition-property: opacity, visibility;
 
   &.is-open {
@@ -582,7 +582,7 @@ input {
   background-color: var(--dairy);
   box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2),
     0px 1px 3px 0px rgba(0, 0, 0, 0.12), 0px 1px 1px 0px rgba(0, 0, 0, 0.14);
-  transition: var(--transition-modal);
+  transition: var(--transition-primary);
   transition-property: opacity, visibility;
 
   .backdrop.is-open & {
@@ -599,42 +599,61 @@ input {
   color: var(--navy-blue);
 }
 
+.modal-form-field {
+  margin-bottom: 8px;
+}
+
 .modal-form-comment {
+  margin-bottom: 16px;
+}
+
+.modal-form-comment-input {
   display: block;
   width: 100%;
   height: 120px;
   padding: 8px 16px;
+  color: var(--navy-blue-modal);
 
   font-size: 12px;
   line-height: 1.17;
-  letter-spacing: 0.48px;
+  letter-spacing: 0.04em;
   border-radius: 4px;
   margin-bottom: 24px;
   border: 1px solid var(--navy-blue-modal, rgba(46, 47, 66, 0.4));
   resize: none;
+  outline: transparent;
+  background-color: transparent;
+  transition: border-color var(--transition-primary);
 
   &::placeholder {
     color: var(--navy-blue-modal);
   }
 }
 
+.modal-form-comment-input:focus {
+  border-color: var(--iris);
+}
+
 .modal-agreement {
-  margin-top: 16px;
   margin-bottom: 24px;
   font-size: 12px;
   line-height: 1.17;
-  letter-spacing: 0.48px;
+  letter-spacing: 0.04em;
   color: var(--light-slate);
+}
 
-  a {
-    color: var(--iris);
-  }
+.privacy-policy {
+  color: var(--iris);
 }
 
 .modal-agreement-label {
   display: flex;
   align-items: center;
   gap: 8px;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  color: var(--light-slate);
 }
 
 .custom-checkbox {
@@ -647,6 +666,7 @@ input {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  fill: transparent;
 }
 
 .check-box-input {
@@ -656,12 +676,9 @@ input {
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.custom-checkbox-icon {
-  visibility: hidden;
-}
-
-.check-box-input:checked + #custom-checkbox .custom-checkbox-icon {
-  visibility: visible;
+.check-box-input:checked + .modal-agreement-label .custom-checkbox {
+  background-color: var(--ocean);
+  fill: var(--cloud);
 }
 
 .modal-btn {
@@ -673,10 +690,23 @@ input {
   flex-shrink: 0;
   width: 24px;
   height: 24px;
-
+  padding: 0;
+  transition: var(--transition-primary);
+  transition-property: background-color, border;
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.1);
   background: var(--cornflower);
+}
+
+.modal-btn:hover,
+.modal-btn:focus {
+  background: var(--ocean);
+  border: none;
+}
+
+.modal-btn:hover .modal-btn-icon,
+.modal-btn:focus .modal-btn-icon {
+  fill: var(--white);
 }
 
 .modal-form-btn {
@@ -686,6 +716,7 @@ input {
   background: var(--iris);
   box-shadow: var(--btn-shadow);
   min-width: 169px;
+  height: 56px;
   padding: 16px 32px;
   transition: background-color var(--transition-primary);
 }
@@ -697,7 +728,10 @@ input {
 .modal-form-label {
   font-size: 12px;
   line-height: 1.17;
-  letter-spacing: 0.48px;
+  letter-spacing: 0.04em;
+  color: var(--light-slate);
+  display: block;
+  margin-bottom: 4px;
 }
 
 .modal-form-wrapper {
@@ -709,12 +743,15 @@ input {
   height: 40px;
   border-radius: 4px;
   border: 1px solid var(--navy-blue-modal, rgba(46, 47, 66, 0.4));
-  padding: 0 50px;
+  padding-left: 38px;
+  background-color: transparent;
+  outline: transparent;
+  transition: border-color var(--transition-primary);
 }
 
 .modal-btn-icon {
   fill: var(--navy-blue);
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: fill var(--transition-primary);
 }
 
 .modal-form-icon {
@@ -722,16 +759,16 @@ input {
   top: 50%;
   left: 16px;
   transform: translateY(-50%);
+  transition: fill var(--transition-primary);
 }
 
-.modal-form-wrapper:focus-within .modal-form-icon {
+.modal-form-input:focus-within .modal-form-icon {
   fill: var(--iris);
 }
 
 .modal-form-comment:focus,
 .modal-form-input:focus {
-  border: 1px solid var(--iris);
-  outline: none;
+  border-color: var(--iris);
 }
 
 /* #endregion */
