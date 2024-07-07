@@ -22,6 +22,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/styles.css" />
+    <script defer src="./main.js"></script>
   </head>
 
   <body>
@@ -66,7 +67,9 @@
       <section class="hero section">
         <div class="container">
           <h1 class="hero-title">Effective Solutions for Your Business</h1>
-          <button class="btn order-btn" type="button">Order Service</button>
+          <button class="btn order-btn js-open-btn" type="button">
+            Order Service
+          </button>
         </div>
       </section>
       <!-- #endregion -->
@@ -492,15 +495,37 @@
             </li>
           </ul>
         </div>
+
+        <div class="subscribe-form-wrapper">
+          <p class="subscribe-title">Subscribe</p>
+          <form class="subscribe-form" name="subscribe-form">
+            <div class="subscribe-form-field">
+              <label for="subscribe-email" class="subscribe-form-label">
+                <input
+                  type="email"
+                  class="subscribe-email-input"
+                  id="subscribe-email"
+                  placeholder="Email"
+                />
+              </label>
+            </div>
+            <button class="btn subscribe-btn" type="submit">
+              <span>Subscribe</span>
+              <svg class="subscribe-icon" width="24" height="24">
+                <use href="./images/icons.svg#icon-airplane"></use>
+              </svg>
+            </button>
+          </form>
+        </div>
       </div>
     </footer>
     <!-- #endregion -->
 
     <!-- #region Modal -->
 
-    <div class="backdrop is-open">
+    <div class="backdrop js-modal">
       <div class="modal">
-        <button class="btn modal-btn">
+        <button class="btn modal-btn js-close-btn" type="submit">
           <svg class="modal-btn-icon" width="8" height="8">
             <use href="./images/icons.svg#icon-close"></use>
           </svg>
@@ -562,19 +587,27 @@
             </div>
 
             <div class="modal-agreement">
-              <label for="modal_agreement">
+              <label class="modal-agreement-label" for="modal_agreement">
                 <input
+                  class="check-box-input visually-hidden"
                   type="checkbox"
                   id="modal_agreement"
                   name="modal_agreement"
+                  value="true"
+                  required
                 />
+                <span id="custom-checkbox" class="custom-checkbox">
+                  <svg class="custom-checkbox-icon" width="16" height="16">
+                    <use href="./images/icons.svg#icon-check"></use>
+                  </svg>
+                </span>
+                <span class="modal-agreement-terms">
+                  I accept the terms and conditions of the
+                  <a href="">Privacy Policy</a>
+                </span>
               </label>
-              <span>
-                I accept the terms and conditions of the
-                <a href="">Privacy Policy</a>
-              </span>
             </div>
-            <button class="btn modal-form-btn" type="button">Send</button>
+            <button class="btn modal-form-btn" type="submit">Send</button>
           </div>
         </form>
       </div>

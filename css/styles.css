@@ -24,8 +24,8 @@
   --btn-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
 
   /* Transitions */
-  --transition-funtion: cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-time: 250ms;
+  --transition-primary: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-modal: 700ms ease-in-out;
 }
 
 /* #region Base styles */
@@ -76,6 +76,11 @@ a {
 button {
   font-family: inherit;
   cursor: pointer;
+  color: currentColor;
+}
+
+input {
+  font-family: inherit;
 }
 
 .visually-hidden {
@@ -162,7 +167,7 @@ button {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: background-color var(--transition-time) var(--transition-funtion);
+  transition: background-color var(--transition-primary);
 }
 
 .btn {
@@ -171,7 +176,7 @@ button {
   align-items: center;
   font-weight: 500;
   line-height: 1.5;
-  letter-spacing: 0, 04em;
+  letter-spacing: 0.04em;
   color: var(--white);
   border: 0;
 }
@@ -230,7 +235,7 @@ button {
   color: var(--navy-blue);
   padding: 24px 0;
   display: inline-block;
-  transition: color var(--transition-time) var(--transition-funtion);
+  transition: color var(--transition-primary);
   position: relative;
 }
 
@@ -256,7 +261,7 @@ button {
 
 .address-link {
   color: var(--slate);
-  transition: color var(--transition-time) var(--transition-funtion);
+  transition: color var(--transition-primary);
 }
 
 .nav-link:hover,
@@ -306,11 +311,15 @@ button {
   border-radius: 4px;
   padding: 16px 32px;
   box-shadow: var(--btn-shadow);
-  transition: background-color var(--transition-time) var(--transition-funtion);
+  transition: background-color var(--transition-primary);
 }
 
 .order-btn:hover,
-.order-btn:focus {
+.order-btn:focus,
+.subscribe-btn:hover,
+.subscribe-btn:focus,
+.modal-form-btn:hover,
+.modal-form-btn:focus {
   background-color: var(--ocean);
 }
 
@@ -402,7 +411,7 @@ button {
   justify-content: center;
   align-items: flex-start;
   column-gap: 24px;
-  transition: box-shadow var(--transition-time) var(--transition-funtion);
+  transition: box-shadow var(--transition-primary);
 }
 
 .portfolio-item:hover,
@@ -435,7 +444,7 @@ button {
   height: 100%;
   width: 100%;
   transform: translateY(100%);
-  transition: transform var(--transition-time) var(--transition-funtion);
+  transition: transform var(--transition-primary);
 }
 
 .portfolio-item:hover .portfolio-hover-desc {
@@ -464,6 +473,11 @@ button {
   max-width: 264px;
 }
 
+.socials {
+  margin-right: 80px;
+}
+
+.subscribe-title,
 .socials-title {
   color: var(--white);
   font-weight: 500;
@@ -485,6 +499,51 @@ button {
   display: inline-block;
   margin-bottom: 16px;
 }
+
+.subscribe-email-input {
+  background-color: var(--navy-blue);
+  padding: 16px 8px;
+  min-width: 264px;
+  height: 40px;
+  border-radius: 4px;
+  border: 1px solid var(--white);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+}
+
+.subscribe-email-input::placeholder {
+  color: var(--white);
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: 0.48px;
+}
+
+.subscribe-form-label {
+  color: var(--white);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.32px;
+  background-color: var(--navy-blue);
+}
+
+.subscribe-btn {
+  border-radius: 4px;
+  background: var(--iris);
+  padding: 8px 24px;
+  gap: 16px;
+  min-height: 40px;
+  min-width: 165px;
+  transition: background-color var(--transition-primary);
+}
+
+.subscribe-form {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.subscribe-icon {
+  fill: var(--white);
+}
 /* #endregion */
 
 /* #region Modal */
@@ -498,7 +557,7 @@ button {
   visibility: hidden;
   pointer-events: none;
 
-  transition: var(--transition-time) var(--transition-funtion);
+  transition: var(--transition-modal);
   transition-property: opacity, visibility;
 
   &.is-open {
@@ -512,7 +571,7 @@ button {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -76%);
+  transform: translate(-50%, -200%);
   opacity: 0;
   max-width: 408px;
   width: 100%;
@@ -523,7 +582,7 @@ button {
   background-color: var(--dairy);
   box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2),
     0px 1px 3px 0px rgba(0, 0, 0, 0.12), 0px 1px 1px 0px rgba(0, 0, 0, 0.14);
-  transition: var(--transition-time) var(--transition-funtion);
+  transition: var(--transition-modal);
   transition-property: opacity, visibility;
 
   .backdrop.is-open & {
@@ -566,9 +625,43 @@ button {
   line-height: 1.17;
   letter-spacing: 0.48px;
   color: var(--light-slate);
+
   a {
     color: var(--iris);
   }
+}
+
+.modal-agreement-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.custom-checkbox {
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  border-radius: 2px;
+  transition: var(--transition-primary);
+  transition-property: background-color, border-color, fill;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.check-box-input {
+  height: 16px;
+  width: 16px;
+  margin-right: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.custom-checkbox-icon {
+  visibility: hidden;
+}
+
+.check-box-input:checked + #custom-checkbox .custom-checkbox-icon {
+  visibility: visible;
 }
 
 .modal-btn {
@@ -594,6 +687,7 @@ button {
   box-shadow: var(--btn-shadow);
   min-width: 169px;
   padding: 16px 32px;
+  transition: background-color var(--transition-primary);
 }
 
 .modal-field {
@@ -612,9 +706,15 @@ button {
 
 .modal-form-input {
   width: 100%;
-  height: 40px !important;
+  height: 40px;
   border-radius: 4px;
   border: 1px solid var(--navy-blue-modal, rgba(46, 47, 66, 0.4));
+  padding: 0 50px;
+}
+
+.modal-btn-icon {
+  fill: var(--navy-blue);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-form-icon {
@@ -622,6 +722,16 @@ button {
   top: 50%;
   left: 16px;
   transform: translateY(-50%);
+}
+
+.modal-form-wrapper:focus-within .modal-form-icon {
+  fill: var(--iris);
+}
+
+.modal-form-comment:focus,
+.modal-form-input:focus {
+  border: 1px solid var(--iris);
+  outline: none;
 }
 
 /* #endregion */
