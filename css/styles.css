@@ -762,7 +762,7 @@ input {
   transition: fill var(--transition-primary);
 }
 
-.modal-form-input:focus-within .modal-form-icon {
+.modal-form-input:focus-within + .modal-form-icon {
   fill: var(--iris);
 }
 
