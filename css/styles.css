@@ -573,8 +573,7 @@ input {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -200%);
-  opacity: 0;
+  transform: translate(-50%, -50%);
   max-width: 408px;
   width: 100%;
   min-height: 584px;
